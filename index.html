@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Desafío Vue</title>
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/estilo.css" rel ="stylesheet">
+        <link href="fuente.css" rel ="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+        <div id="formulario">
+            <div class="container">
+                <p id="tituloForm" v-model="titulo">{{ titulo }}</p>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="inputName">Nombre:</label>
+                        <input type="text" class="form-control" v-model="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDescription">Descripción: </label>
+                        <input type="text" class="form-control" v-model="descripcion">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPrecio">Precio:</label>
+                        <input type="text" class="form-control" v-model="precio">
+                    </div>
+                    <input type="button" class="btn btn-success" v-model="boton" v-on:click="agregarModificar">
+                </form>
+        </div>
+        </div>
+        <div id="tabla">
+            <p id="listaTabla">Lista de productos</p>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th> 
+                    <th>Precio</th>
+                    <th>Opciones</th>
+                </tr>
+                <tr v-for="item in lista" >
+                    <td v-text="item.nombre"></td>
+                    <td v-text="item.descripcion"></td>
+                    <td v-text="item.precio"></td>
+                    <td>
+                        <div >
+                            <input v-on:click="modificar(item.index)" id="modificar" type="image" src="img/modificar.png" class="btn btn-success" >
+                            <input id="eliminar" type="image" src="img/eliminar.png" class="btn btn-success" v-on:click="eliminar(item.index)">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="js/codigo.js"></script>
+</html>
